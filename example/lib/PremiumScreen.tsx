@@ -2,18 +2,29 @@ import React from "react";
 import {
   View,
   Text,
+  Dimensions,
   StyleProp,
   StyleSheet,
   ViewStyle,
   SafeAreaView,
 } from "react-native";
+import RNAnimated from "react-native-animated-component";
 import LinearGradient from "react-native-linear-gradient";
 import CloseButton from "./components/close-button/CloseButton";
 import Logo from "./components/logo/Logo";
+import PremiumFeatures from "./components/premium-features/PremiumFeatures";
 /**
  * ? Local Imports
  */
 import styles from "./PremiumScreen.style";
+
+const { width: ScreenWidth } = Dimensions.get("screen");
+
+const mockFeatures = [
+  "Unlimited monthly posts",
+  "Personalized activity insights",
+  "Advanced promotion tools",
+];
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
@@ -32,7 +43,7 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
       style={{ marginTop: 32, alignItems: "center", justifyContent: "center" }}
     >
       <Text style={{ color: "#bfaf89", fontSize: 32 }}>Get Premium</Text>
-      <View style={{ marginTop: 24 }}>
+      <View style={{ marginTop: 24, width: ScreenWidth * 0.8 }}>
         <Text style={{ textAlign: "center", color: "#dbdbdd", lineHeight: 20 }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa
           mauris, pretium bibendum orci in, consectetur vulputate erat. Duis
@@ -50,9 +61,12 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
       style={StyleSheet.absoluteFill}
     >
       <SafeAreaView>
-        <CloseButton onPress={onClosePress} />
-        <Logo />
-        <TitleContainer />
+        <RNAnimated animationDuration={1250} appearFrom="top">
+          <CloseButton onPress={onClosePress} />
+          <Logo />
+          <TitleContainer />
+          <PremiumFeatures data={mockFeatures} />
+        </RNAnimated>
       </SafeAreaView>
     </LinearGradient>
   );
