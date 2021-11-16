@@ -19,6 +19,7 @@ type CustomImageStyleProp =
 
 interface ICloseButtonProps {
   style?: CustomStyleProp;
+  ImageComponent?: any;
   imageStyle?: CustomImageStyleProp;
   imageSource?: ImageSourcePropType;
   onPress?: () => void;
@@ -27,12 +28,13 @@ interface ICloseButtonProps {
 const CloseButton: React.FC<ICloseButtonProps> = ({
   style,
   imageStyle,
+  ImageComponent = Image,
   imageSource = require("../../local-assets/close.png"),
   onPress,
 }) => {
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <Image
+      <ImageComponent
         resizeMode="contain"
         source={imageSource}
         style={[styles.imageStyle, imageStyle]}

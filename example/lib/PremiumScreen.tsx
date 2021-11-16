@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import CloseButton from "./components/close-button/CloseButton";
+import Logo from "./components/logo/Logo";
 /**
  * ? Local Imports
  */
@@ -26,6 +27,21 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   style,
   onClosePress,
 }) => {
+  const TitleContainer = () => (
+    <View
+      style={{ marginTop: 32, alignItems: "center", justifyContent: "center" }}
+    >
+      <Text style={{ color: "#bfaf89", fontSize: 32 }}>Get Premium</Text>
+      <View style={{ marginTop: 24 }}>
+        <Text style={{ textAlign: "center", color: "#dbdbdd", lineHeight: 20 }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa
+          mauris, pretium bibendum orci in, consectetur vulputate erat. Duis
+          egestas ex enim, quis elementum mauris posuere at.
+        </Text>
+      </View>
+    </View>
+  );
+
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -35,7 +51,8 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
     >
       <SafeAreaView>
         <CloseButton onPress={onClosePress} />
-        <View></View>
+        <Logo />
+        <TitleContainer />
       </SafeAreaView>
     </LinearGradient>
   );
