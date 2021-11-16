@@ -15,7 +15,7 @@ interface ILogoProps {
 const Logo: React.FC<ILogoProps> = ({ style, ImageComponent = Image }) => {
   return (
     <View
-      style={{ marginTop: 32, alignItems: "center", justifyContent: "center" }}
+      style={{ marginTop: 16, alignItems: "center", justifyContent: "center" }}
     >
       <ImageComponent
         resizeMode="contain"

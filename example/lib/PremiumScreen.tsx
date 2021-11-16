@@ -10,15 +10,33 @@ import {
 } from "react-native";
 import RNAnimated from "react-native-animated-component";
 import LinearGradient from "react-native-linear-gradient";
-import CloseButton from "./components/close-button/CloseButton";
-import Logo from "./components/logo/Logo";
-import PremiumFeatures from "./components/premium-features/PremiumFeatures";
 /**
  * ? Local Imports
  */
 import styles from "./PremiumScreen.style";
+import Logo from "./components/logo/Logo";
+import PlanList from "./components/plan-list/PlanList";
+import CloseButton from "./components/close-button/CloseButton";
+import PremiumFeatures from "./components/premium-features/PremiumFeatures";
 
 const { width: ScreenWidth } = Dimensions.get("screen");
+
+export interface IPlan {
+  title: string;
+  price: number | string;
+  discountPrice?: number | string;
+  discountText?: string;
+}
+
+const mockPlans = [
+  { title: "Monthly Plan", price: "$9.99" },
+  {
+    title: "Annual Plan",
+    price: "$95.99",
+    discountPrice: "$120",
+    discountText: "Get 20% OFF",
+  },
+];
 
 const mockFeatures = [
   "Unlimited monthly posts",
@@ -40,14 +58,20 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
 }) => {
   const TitleContainer = () => (
     <View
-      style={{ marginTop: 32, alignItems: "center", justifyContent: "center" }}
+      style={{ marginTop: 24, alignItems: "center", justifyContent: "center" }}
     >
       <Text style={{ color: "#bfaf89", fontSize: 32 }}>Get Premium</Text>
-      <View style={{ marginTop: 24, width: ScreenWidth * 0.8 }}>
-        <Text style={{ textAlign: "center", color: "#dbdbdd", lineHeight: 20 }}>
+      <View style={{ marginTop: 24, width: ScreenWidth * 0.85 }}>
+        <Text
+          style={{
+            textAlign: "center",
+            color: "#bec2ca",
+            lineHeight: 20,
+            fontWeight: "700",
+          }}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa
-          mauris, pretium bibendum orci in, consectetur vulputate erat. Duis
-          egestas ex enim, quis elementum mauris posuere at.
+          mauris, pretium bibendum orci in, consectetur vulputate erat.
         </Text>
       </View>
     </View>
@@ -66,6 +90,7 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
           <Logo />
           <TitleContainer />
           <PremiumFeatures data={mockFeatures} />
+          <PlanList data={mockPlans} />
         </RNAnimated>
       </SafeAreaView>
     </LinearGradient>

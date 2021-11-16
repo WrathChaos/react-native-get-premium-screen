@@ -35,10 +35,10 @@ const PremiumFeatures: React.FC<IPremiumFeaturesProps> = ({ style, data }) => {
           <View
             key={item}
             style={{
-              marginTop: 16,
+              marginTop: 24,
               flexDirection: "row",
               alignItems: "center",
-              marginLeft: ScreenWidth * 0.2,
+              marginLeft: ScreenWidth * 0.15,
             }}
           >
             <View
@@ -54,11 +54,15 @@ const PremiumFeatures: React.FC<IPremiumFeaturesProps> = ({ style, data }) => {
               <Image
                 resizeMode="contain"
                 source={require("../../local-assets/check.png")}
-                style={{ height: 10, width: 10 }}
+                style={{ height: 15, width: 15 }}
               />
             </View>
             <View style={{ marginLeft: 16 }}>
-              <Text style={{ color: "#dadbdd" }}>{item}</Text>
+              <Text
+                style={{ color: "#dadbdd", fontSize: 16, fontWeight: "bold" }}
+              >
+                {item}
+              </Text>
             </View>
           </View>
         );
