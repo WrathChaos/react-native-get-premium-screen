@@ -1,26 +1,41 @@
 import React from "react";
-import { View, Text, Image, StyleProp, ViewStyle } from "react-native";
+import {
+  View,
+  Image,
+  StyleProp,
+  ImageStyle,
+  ViewStyle,
+  ImageSourcePropType,
+} from "react-native";
 /**
  * ? Local Imports
  */
 import styles from "./Logo.style";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomImageStyleProp =
+  | StyleProp<ImageStyle>
+  | Array<StyleProp<ImageStyle>>;
 
 interface ILogoProps {
   style?: CustomStyleProp;
+  imageStyle?: CustomImageStyleProp;
   ImageComponent?: any;
+  imageSource?: ImageSourcePropType;
 }
 
-const Logo: React.FC<ILogoProps> = ({ style, ImageComponent = Image }) => {
+const Logo: React.FC<ILogoProps> = ({
+  style,
+  imageStyle,
+  ImageComponent = Image,
+  imageSource = require("../../local-assets/diamond-3.png"),
+}) => {
   return (
-    <View
-      style={{ marginTop: 16, alignItems: "center", justifyContent: "center" }}
-    >
+    <View style={[styles.container, style]}>
       <ImageComponent
         resizeMode="contain"
-        source={require("../../local-assets/diamond-3.png")}
-        style={{ height: 50, width: 50 }}
+        source={imageSource}
+        style={[styles.imageStyle, imageStyle]}
       />
     </View>
   );
