@@ -14,6 +14,7 @@ interface ITitleContainerProps {
   description?: string;
   titleTextStyle?: CustomTextStyleProp;
   descriptionTextStyle?: CustomTextStyleProp;
+  TextComponent?: any;
 }
 
 const TitleContainer: React.FC<ITitleContainerProps> = ({
@@ -22,14 +23,17 @@ const TitleContainer: React.FC<ITitleContainerProps> = ({
   descriptionTextStyle,
   title,
   description,
+  TextComponent = Text,
 }) => {
   return (
     <View style={[styles.container, style]}>
       <Text style={[styles.titleTextStyle, titleTextStyle]}>{title}</Text>
       <View style={styles.descriptionContainer}>
-        <Text style={[styles.descriptionTextStyle, descriptionTextStyle]}>
+        <TextComponent
+          style={[styles.descriptionTextStyle, descriptionTextStyle]}
+        >
           {description}
-        </Text>
+        </TextComponent>
       </View>
     </View>
   );

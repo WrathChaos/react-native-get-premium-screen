@@ -57,6 +57,7 @@ type CustomImageStyleProp =
 interface IPremiumScreenProps {
   title: string;
   description?: string;
+  planListTitle: string;
   backgroundColors?: string[];
   disableCloseButton?: boolean;
   ImageComponent?: React.ReactChild;
@@ -73,12 +74,15 @@ interface IPremiumScreenProps {
   descriptionTextStyle?: CustomImageStyleProp;
   premiumFeaturesContainerStyle?: CustomViewStyleProp;
   premiumFeatureItemTextStyle?: CustomTextStyleProp;
+  planListContainerStyle?: CustomViewStyleProp;
+  planListTitleTextStyle?: CustomTextStyleProp;
 
   onClosePress?: () => void;
 }
 
 const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   title,
+  planListTitle,
   description,
   backgroundColors = ["#6a6b76", "#494951", "#323239"],
   disableCloseButton = false,
@@ -94,6 +98,8 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   premiumFeaturesContainerStyle,
   checkImageSource,
   premiumFeatureItemTextStyle,
+  planListContainerStyle,
+  planListTitleTextStyle,
   ImageComponent,
   TextComponent,
   onClosePress,
@@ -130,14 +136,22 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
             style={titleContainerStyle}
             titleTextStyle={titleTextStyle}
             descriptionTextStyle={descriptionTextStyle}
+            TextComponent={TextComponent}
           />
           <PremiumFeatures
             data={mockFeatures}
             style={premiumFeaturesContainerStyle}
             checkImageSource={checkImageSource}
             textStyle={premiumFeatureItemTextStyle}
+            ImageComponent={ImageComponent}
           />
-          <PlanList data={mockPlans} />
+          <PlanList
+            data={mockPlans}
+            title={planListTitle}
+            style={planListContainerStyle}
+            titleTextStyle={planListTitleTextStyle}
+            TextComponent={TextComponent}
+          />
         </RNAnimated>
       </SafeAreaView>
     </LinearGradient>

@@ -21,16 +21,22 @@ interface IPlanListProps {
   style?: CustomStyleProp;
   titleTextStyle?: CustomTextStyleProp;
   data: IPlan[];
+  title: string;
+  TextComponent?: any;
 }
 
 const PlanList: React.FC<IPlanListProps> = ({
   style,
   data,
+  title,
   titleTextStyle,
+  TextComponent = Text,
 }) => {
   const Title = () => (
     <View style={styles.titleContainer}>
-      <Text style={[styles.titleTextStyle, titleTextStyle]}>Choose a plan</Text>
+      <TextComponent style={[styles.titleTextStyle, titleTextStyle]}>
+        {title}
+      </TextComponent>
     </View>
   );
 

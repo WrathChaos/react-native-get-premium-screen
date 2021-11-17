@@ -16,7 +16,13 @@ const descriptionText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa mauris, pretium bibendum orci in, consectetur vulputate erat.";
 
 const App = () => {
-  return <PremiumScreen title="Get Premium" description={descriptionText} />;
+  return (
+    <PremiumScreen
+      title="Get Premium"
+      planListTitle="Choose a plan"
+      description={descriptionText}
+    />
+  );
 };
 
 export default App;
