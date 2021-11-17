@@ -56,8 +56,8 @@ type CustomImageStyleProp =
 
 interface IPremiumScreenProps {
   title: string;
-  description?: string;
   planListTitle: string;
+  description?: string;
   backgroundColors?: string[];
   disableCloseButton?: boolean;
   ImageComponent?: React.ReactChild;
