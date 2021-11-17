@@ -9,19 +9,14 @@
  */
 
 import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from "react-native";
+import {} from "react-native";
 import PremiumScreen from "./lib/PremiumScreen";
 
+const descriptionText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa mauris, pretium bibendum orci in, consectetur vulputate erat.";
+
 const App = () => {
-  return <PremiumScreen />;
+  return <PremiumScreen title="Get Premium" description={descriptionText} />;
 };
 
 export default App;

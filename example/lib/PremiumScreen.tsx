@@ -7,6 +7,9 @@ import {
   StyleSheet,
   ViewStyle,
   SafeAreaView,
+  ImageStyle,
+  TextStyle,
+  ImageSourcePropType,
 } from "react-native";
 import RNAnimated from "react-native-animated-component";
 import LinearGradient from "react-native-linear-gradient";
@@ -18,6 +21,7 @@ import Logo from "./components/logo/Logo";
 import PlanList from "./components/plan-list/PlanList";
 import CloseButton from "./components/close-button/CloseButton";
 import PremiumFeatures from "./components/premium-features/PremiumFeatures";
+import TitleContainer from "./components/title-container/TitleContainer";
 
 const { width: ScreenWidth } = Dimensions.get("screen");
 
@@ -44,51 +48,56 @@ const mockFeatures = [
   "Advanced promotion tools",
 ];
 
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomViewStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
+type CustomImageStyleProp =
+  | StyleProp<ImageStyle>
+  | Array<StyleProp<ImageStyle>>;
 
 interface IPremiumScreenProps {
-  style?: CustomStyleProp;
+  title: string;
+  description?: string;
+  backgroundColors?: string[];
+  disableCloseButton?: boolean;
+  ImageComponent?: React.ReactChild;
   TextComponent?: React.ReactChild;
+  logoContainerStyle?: CustomViewStyleProp;
+  logoImageStyle?: CustomImageStyleProp;
+  logoImageSource?: ImageSourcePropType;
   onClosePress?: () => void;
 }
 
 const PremiumScreen: React.FC<IPremiumScreenProps> = ({
-  style,
+  title,
+  description,
+  backgroundColors = ["#6a6b76", "#494951", "#323239"],
+  disableCloseButton = false,
+  logoContainerStyle,
+  logoImageStyle,
+  logoImageSource,
+  ImageComponent,
+  TextComponent,
   onClosePress,
+  ...rest
 }) => {
-  const TitleContainer = () => (
-    <View
-      style={{ marginTop: 24, alignItems: "center", justifyContent: "center" }}
-    >
-      <Text style={{ color: "#bfaf89", fontSize: 32 }}>Get Premium</Text>
-      <View style={{ marginTop: 24, width: ScreenWidth * 0.85 }}>
-        <Text
-          style={{
-            textAlign: "center",
-            color: "#bec2ca",
-            lineHeight: 20,
-            fontWeight: "700",
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa
-          mauris, pretium bibendum orci in, consectetur vulputate erat.
-        </Text>
-      </View>
-    </View>
-  );
-
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
-      colors={["#6a6b76", "#494951", "#323239"]}
+      colors={backgroundColors}
       style={StyleSheet.absoluteFill}
+      {...rest}
     >
       <SafeAreaView>
         <RNAnimated animationDuration={1250} appearFrom="top">
-          <CloseButton onPress={onClosePress} />
-          <Logo />
-          <TitleContainer />
+          {!disableCloseButton && <CloseButton onPress={onClosePress} />}
+          <Logo
+            style={logoContainerStyle}
+            imageSource={logoImageSource}
+            imageStyle={logoImageStyle}
+            ImageComponent={ImageComponent}
+          />
+          <TitleContainer title={title} description={description} />
           <PremiumFeatures data={mockFeatures} />
           <PlanList data={mockPlans} />
         </RNAnimated>

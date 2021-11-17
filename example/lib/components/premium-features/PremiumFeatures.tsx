@@ -2,10 +2,11 @@ import React from "react";
 import {
   View,
   Image,
-  Dimensions,
   Text,
   StyleProp,
   ViewStyle,
+  ImageSourcePropType,
+  TextStyle,
 } from "react-native";
 import RNAnimated from "react-native-animated-component";
 /**
@@ -13,59 +14,41 @@ import RNAnimated from "react-native-animated-component";
  */
 import styles from "./PremiumFeatures.style";
 
-const { width: ScreenWidth } = Dimensions.get("screen");
-
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
+type CustomTextStyleProp = StyleProp<TextStyle> | Array<StyleProp<TextStyle>>;
 
 interface IPremiumFeaturesProps {
   style?: CustomStyleProp;
+  checkImageSource?: ImageSourcePropType;
+  textStyle?: CustomTextStyleProp;
   data: string[];
 }
 
-const PremiumFeatures: React.FC<IPremiumFeaturesProps> = ({ style, data }) => {
+const PremiumFeatures: React.FC<IPremiumFeaturesProps> = ({
+  style,
+  data,
+  textStyle,
+  checkImageSource = require("../../local-assets/check.png"),
+}) => {
+  const PremiumFeatureItem = ({ item }: { item: any }) => (
+    <View key={item} style={styles.itemContainer}>
+      <View style={styles.checkImageContainer}>
+        <Image
+          resizeMode="contain"
+          source={checkImageSource}
+          style={styles.checkImageStyle}
+        />
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={[styles.textStyle, textStyle]}>{item}</Text>
+      </View>
+    </View>
+  );
+
   return (
-    <RNAnimated
-      style={{
-        marginTop: 24,
-      }}
-      animationDuration={2500}
-    >
+    <RNAnimated style={[styles.container, style]} animationDuration={2500}>
       {data.map((item: string) => {
-        return (
-          <View
-            key={item}
-            style={{
-              marginTop: 24,
-              flexDirection: "row",
-              alignItems: "center",
-              marginLeft: ScreenWidth * 0.15,
-            }}
-          >
-            <View
-              style={{
-                width: 20,
-                height: 20,
-                borderRadius: 15,
-                backgroundColor: "#dadbdd",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Image
-                resizeMode="contain"
-                source={require("../../local-assets/check.png")}
-                style={{ height: 15, width: 15 }}
-              />
-            </View>
-            <View style={{ marginLeft: 16 }}>
-              <Text
-                style={{ color: "#dadbdd", fontSize: 16, fontWeight: "bold" }}
-              >
-                {item}
-              </Text>
-            </View>
-          </View>
-        );
+        return <PremiumFeatureItem key={item} item={item} />;
       })}
     </RNAnimated>
   );
