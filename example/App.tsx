@@ -10,7 +10,7 @@
 
 import React from "react";
 import {} from "react-native";
-import PremiumScreen from "./lib/PremiumScreen";
+import PremiumScreen, { IPlan } from "./build/dist/PremiumScreen";
 
 const descriptionText =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam massa mauris, pretium bibendum orci in, consectetur vulputate erat.";
@@ -21,6 +21,9 @@ const App = () => {
       title="Get Premium"
       planListTitle="Choose a plan"
       description={descriptionText}
+      onPlanSelect={(selectedPlan: IPlan) => {
+        alert(JSON.stringify(selectedPlan));
+      }}
     />
   );
 };

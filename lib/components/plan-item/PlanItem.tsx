@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   View,
   Text,
@@ -25,6 +25,7 @@ interface IPlanItemProps {
   priceTextStyle?: CustomTextStyleProp;
   discountTextStyle?: CustomTextStyleProp;
   discountTextColors?: string[];
+  onPress: () => void;
 }
 
 const PlanItem: React.FC<IPlanItemProps> = ({
@@ -35,6 +36,7 @@ const PlanItem: React.FC<IPlanItemProps> = ({
   discountTextStyle,
   discountPriceTextStyle,
   discountTextColors = ["#b7a881", "#938360"],
+  onPress,
 }) => {
   const { title, discountText, price, discountPrice } = data;
 
@@ -72,7 +74,7 @@ const PlanItem: React.FC<IPlanItemProps> = ({
     ) : null;
 
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
       <Title />
       <DiscountPrice />
       <Price />

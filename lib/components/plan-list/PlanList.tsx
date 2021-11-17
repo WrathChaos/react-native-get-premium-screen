@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   View,
   Text,
@@ -23,6 +23,7 @@ interface IPlanListProps {
   data: IPlan[];
   title: string;
   TextComponent?: any;
+  onPress: (selectedPlan: IPlan) => void;
 }
 
 const PlanList: React.FC<IPlanListProps> = ({
@@ -31,6 +32,7 @@ const PlanList: React.FC<IPlanListProps> = ({
   title,
   titleTextStyle,
   TextComponent = Text,
+  onPress,
 }) => {
   const Title = () => (
     <View style={styles.titleContainer}>
@@ -47,7 +49,9 @@ const PlanList: React.FC<IPlanListProps> = ({
         data={data}
         horizontal
         style={styles.listStyle}
-        renderItem={({ item }) => <PlanItem data={item} />}
+        renderItem={({ item }) => (
+          <PlanItem data={item} onPress={() => onPress(item)} />
+        )}
       />
     </View>
   );

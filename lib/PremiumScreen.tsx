@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   View,
   Text,
@@ -76,7 +76,7 @@ interface IPremiumScreenProps {
   premiumFeatureItemTextStyle?: CustomTextStyleProp;
   planListContainerStyle?: CustomViewStyleProp;
   planListTitleTextStyle?: CustomTextStyleProp;
-
+  onPlanSelect: (selectedPlan: IPlan) => void;
   onClosePress?: () => void;
 }
 
@@ -103,6 +103,7 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   ImageComponent,
   TextComponent,
   onClosePress,
+  onPlanSelect,
   ...rest
 }) => {
   return (
@@ -151,6 +152,7 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
             style={planListContainerStyle}
             titleTextStyle={planListTitleTextStyle}
             TextComponent={TextComponent}
+            onPress={onPlanSelect}
           />
         </RNAnimated>
       </SafeAreaView>
