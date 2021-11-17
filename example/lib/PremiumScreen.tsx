@@ -61,15 +61,19 @@ interface IPremiumScreenProps {
   disableCloseButton?: boolean;
   ImageComponent?: React.ReactChild;
   TextComponent?: React.ReactChild;
+  logoImageSource?: ImageSourcePropType;
+  checkImageSource?: ImageSourcePropType;
+  closeButtonImageSource?: ImageSourcePropType;
   logoContainerStyle?: CustomViewStyleProp;
   logoImageStyle?: CustomImageStyleProp;
-  logoImageSource?: ImageSourcePropType;
   closeButtonStyle?: CustomViewStyleProp;
   closeButtonImageStyle?: CustomImageStyleProp;
-  closeButtonImageSource?: ImageSourcePropType;
   titleContainerStyle?: CustomViewStyleProp;
   titleTextStyle?: CustomImageStyleProp;
   descriptionTextStyle?: CustomImageStyleProp;
+  premiumFeaturesContainerStyle?: CustomViewStyleProp;
+  premiumFeatureItemTextStyle?: CustomTextStyleProp;
+
   onClosePress?: () => void;
 }
 
@@ -87,6 +91,9 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   titleContainerStyle,
   titleTextStyle,
   descriptionTextStyle,
+  premiumFeaturesContainerStyle,
+  checkImageSource,
+  premiumFeatureItemTextStyle,
   ImageComponent,
   TextComponent,
   onClosePress,
@@ -124,7 +131,12 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
             titleTextStyle={titleTextStyle}
             descriptionTextStyle={descriptionTextStyle}
           />
-          <PremiumFeatures data={mockFeatures} />
+          <PremiumFeatures
+            data={mockFeatures}
+            style={premiumFeaturesContainerStyle}
+            checkImageSource={checkImageSource}
+            textStyle={premiumFeatureItemTextStyle}
+          />
           <PlanList data={mockPlans} />
         </RNAnimated>
       </SafeAreaView>
