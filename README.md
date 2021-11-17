@@ -1,6 +1,6 @@
 <img alt="React Native Get Premium Screen" src="assets/logo.png" width="1050"/>
 
-[![React Native Get Premium Screen](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-get-premium-screen)
+[![React Native Get Premium Screen](https://img.shields.io/badge/-Easy%20to%20use%20and%20fully%20customizable%20get%20premium%20screen%20for%20React%20Native-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-get-premium-screen)
 
 [![npm version](https://img.shields.io/npm/v/react-native-get-premium-screen.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-get-premium-screen)
 [![npm](https://img.shields.io/npm/dt/react-native-get-premium-screen.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-get-premium-screen)
@@ -105,6 +105,10 @@ should work of the example project.
 ## Author
 
 FreakyCoder, kurayogun@gmail.com
+
+## Credits
+
+[Big thanks to Max ⚡️ Osichka from Dribbble, highly inspired by his/her design](https://dribbble.com/shots/9533056-Get-Premium/attachments/1560148?mode=media)
 
 ## License
 
