@@ -64,6 +64,9 @@ interface IPremiumScreenProps {
   logoContainerStyle?: CustomViewStyleProp;
   logoImageStyle?: CustomImageStyleProp;
   logoImageSource?: ImageSourcePropType;
+  closeButtonStyle?: CustomViewStyleProp;
+  closeButtonImageStyle?: CustomImageStyleProp;
+  closeButtonImageSource?: ImageSourcePropType;
   onClosePress?: () => void;
 }
 
@@ -75,6 +78,9 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   logoContainerStyle,
   logoImageStyle,
   logoImageSource,
+  closeButtonStyle,
+  closeButtonImageStyle,
+  closeButtonImageSource,
   ImageComponent,
   TextComponent,
   onClosePress,
@@ -90,7 +96,15 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
     >
       <SafeAreaView>
         <RNAnimated animationDuration={1250} appearFrom="top">
-          {!disableCloseButton && <CloseButton onPress={onClosePress} />}
+          {!disableCloseButton && (
+            <CloseButton
+              style={closeButtonStyle}
+              imageStyle={closeButtonImageStyle}
+              imageSource={closeButtonImageSource}
+              ImageComponent={ImageComponent}
+              onPress={onClosePress}
+            />
+          )}
           <Logo
             style={logoContainerStyle}
             imageSource={logoImageSource}
