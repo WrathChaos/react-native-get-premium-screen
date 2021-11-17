@@ -67,6 +67,9 @@ interface IPremiumScreenProps {
   closeButtonStyle?: CustomViewStyleProp;
   closeButtonImageStyle?: CustomImageStyleProp;
   closeButtonImageSource?: ImageSourcePropType;
+  titleContainerStyle?: CustomViewStyleProp;
+  titleTextStyle?: CustomImageStyleProp;
+  descriptionTextStyle?: CustomImageStyleProp;
   onClosePress?: () => void;
 }
 
@@ -81,6 +84,9 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
   closeButtonStyle,
   closeButtonImageStyle,
   closeButtonImageSource,
+  titleContainerStyle,
+  titleTextStyle,
+  descriptionTextStyle,
   ImageComponent,
   TextComponent,
   onClosePress,
@@ -111,7 +117,13 @@ const PremiumScreen: React.FC<IPremiumScreenProps> = ({
             imageStyle={logoImageStyle}
             ImageComponent={ImageComponent}
           />
-          <TitleContainer title={title} description={description} />
+          <TitleContainer
+            title={title}
+            description={description}
+            style={titleContainerStyle}
+            titleTextStyle={titleTextStyle}
+            descriptionTextStyle={descriptionTextStyle}
+          />
           <PremiumFeatures data={mockFeatures} />
           <PlanList data={mockPlans} />
         </RNAnimated>
