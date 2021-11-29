@@ -10,7 +10,7 @@
 
 <p align="center">
   <img alt="React Native Get Premium Screen"
-        src="assets/Screenshots/react-native-get-premium-screen.gif" />
+        src="assets/Screenshots/react-native-get-premium-screen.gif" height="850" />
 </p>
 
 # Installation
